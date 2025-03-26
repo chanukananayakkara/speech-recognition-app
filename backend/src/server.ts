@@ -13,7 +13,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello, Express with TypeScript!");
 });
 
-app.post("/api/speech-service", (req: Request, res: Response) => {
+app.post("/api/speech-service/", (req: Request, res: Response) => {
   const { transcript } = req.body;
   //intitialize the state machine
   const stateMachine: StateMachine = new StateMachine();

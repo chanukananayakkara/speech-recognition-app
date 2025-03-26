@@ -1,6 +1,7 @@
 import GreetingState from "../States/GreetingState";
 import IdleState from "../States/IdleState";
 import IState from "../States/IState";
+import TextIdentifier from "./TextIdentifier";
 
 export default class StateMachine {
   private currentState: IState;
@@ -18,7 +19,7 @@ export default class StateMachine {
   }
 
   stateIdentifier(transcript: string) {
-    if (transcript === "hello") {
+    if (TextIdentifier.isGreetings(transcript)) {
       console.log("User said hello");
       this.transitionTo(new GreetingState());
       this.answer = this.currentState.handle();
