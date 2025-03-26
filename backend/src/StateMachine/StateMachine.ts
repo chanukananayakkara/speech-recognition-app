@@ -1,3 +1,4 @@
+import ErrorState from "../States/ErrorState";
 import GreetingState from "../States/GreetingState";
 import IdleState from "../States/IdleState";
 import IState from "../States/IState";
@@ -22,6 +23,9 @@ export default class StateMachine {
     if (TextIdentifier.isGreetings(transcript)) {
       console.log("User said hello");
       this.transitionTo(new GreetingState());
+      this.answer = this.currentState.handle();
+    } else {
+      this.transitionTo(new ErrorState());
       this.answer = this.currentState.handle();
     }
   }
